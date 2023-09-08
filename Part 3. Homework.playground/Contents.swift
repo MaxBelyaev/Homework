@@ -262,105 +262,195 @@ import Foundation
 
 //:12.Functions
 //Task 1
-//1
+
+//Разработайте функцию, которая принимает на вход значение типа Bool,
+//преобразует его в строку и возвращает. То есть передав true типа Bool должно вернуться "true"
+//типа String, то же самое и для false.
+
 //func convert(bool: Bool) -> String {
 //    return String(bool)
 //}
 //convert(bool: true)
 
-
+//-----------------------------------------------------------------
 //Task 2
-//var arr = [-1,2,3,4,-5]
-//func sumOfPositiveValues( arr: inout [Int]) -> Int {
+
+//Напишите функцию, которая принимает на вход массив с элементами типа Int,
+//а возвращает целое число — сумму всех положительных элементов переданного массива.
+//К примеру для массива [1,-2,3,4,-5] должно быть возвращено 1+3+4 = 8
+
+//var arr = [1,2,-3,-4,5]
+//
+//func additionOfPositiveNumbs(_ array: [Int]) -> Int {
 //    var sum = 0
-//    for num in arr where num > 0 {
-//        sum += num
-//    }
+//    for number in array where number > 0{
+//        sum += number
+//}
 //    return sum
 //}
-// sumOfPositiveValues(arr: &arr)
+//
+//additionOfPositiveNumbs(arr)
 
-
+//-----------------------------------------------------------------
 //Task 3
-//var arr: [Int] = [1,2,3,4]
-//func prodOfNumbers(arr: [Int]) -> Int {
+//Напишите функцию, которая принимает на вход массив типа [Int] и, в случае,
+//если количество элементов > 0, то возвращает целое число —
+//произведение всех элементов переданной коллекции.
+//Если количество элементов = 0, то возвращается 0.
+//Пример:
+//[1,2,3,4] -> 1 * 2 * 3 * 4 = 24
+
+//func prodOfElements(_ array: [Int]) -> Int {
 //    var product = 0
-//    if arr.count > 0 {
+//    if array.count > 0 {
 //        product = 1
-//        for i in arr {
-//            product *= i
+//        for number in array {
+//            product *= number
 //    }
 //}
 //    return product
 //}
-//prodOfNumbers(arr: arr)
-//prodOfNumbers(arr: [])
+//
+//prodOfElements([1,2,28,4])
 
-
+//-----------------------------------------------------------------
 //Task 4
-//func overloar(_ a: Int, _ b: Int) -> Int {
-//    a * b
+//Используя перегрузку (overloading) создайте две одноименные функции,
+//которые могут принимать два однотипных параметра (Int или Double) и возвращают их произведение
+
+//1
+//func prodOfElements(_ a: Int, _ b: Int) -> Int {
+//    return a * b
 //}
 //
-//func overloar(_ a: Double, _ b: Double) -> Double {
-//    a * b
+//prodOfElements(2, 5)
+
+//2
+//func prodOfElements(_ a: Double, _ b: Double) -> Double {
+//    return a * b
 //}
 //
-//overloar(4,5)
-//overloar(4.1, 5.2)
+//prodOfElements(2.5, 5)
 
-
+//-----------------------------------------------------------------
 //Task 5
+//Напишите функцию, которая принимает на вход целое число и возвращает противоположное ему целое число
 
-//func opposite(_ x: Int) -> Int {
-//    return -x
+//func opposite(_ a: Int) -> Int {
+//    return -a
 //}
-//opposite(-12)
-//opposite(32)
+//opposite(-1)
 
-
+//-----------------------------------------------------------------
 //Task 6
+//Напишите функцию, которая производит подсчет стоимости аренды квартиры с учетом следующих условий:
+//1. Один день аренды стоит 850 рублей
+//2. При аренде от 3 дней вы получаете скидку в размере 550 рублей от общей суммы
+//3. При аренде от 7 дней вы получаете скидку в размере 1620 рублей от общей суммы
+//Функция должна принимать на вход количество дней, а возвращать итоговую сумму.
 
-//func rentCalc(days: Int) -> Int {
-//    var sum = days * 850
+//func rent(_ days: Int) -> Int {
+//    let priceOfDay = 850
+//    var result = days * priceOfDay
 //    if days >= 7 {
-//        sum -= 1620
-//    }else if days >= 3 {
-//        sum -= 550
+//        result -= 1620
+//    } else if days >= 3 {
+//        result -= 550
 //    }
-//    return sum
+//    return result
 //}
-//rentCalc(days: 5)
-//rentCalc(days: 9)
+//
+//rent(9)
 
-
+//-----------------------------------------------------------------
 //Task 7
-
-//func numContent(_ array: [Int], _ a: Int) -> Bool {
-//    array.contains(a)
+//Напишите функцию, которая принимает на вход массив типа [Int] и значение Int,
+//проверяет содержится ли целочисленный элемент в массиве и возвращает true или false
+//в зависимости от результата проверки.
+//Покажите не менее двух способов решения данной задачи
+//1
+//func contains1(_ array: [Int], _ a: Int) -> Bool {
+//    return array.contains(a)
 //}
-//numContent([1,2,3], 4)
-//
-//
-//func numContent2(_ array: [Int], _ a: Int) -> Bool {
-//    return array.firstIndex(of: a) != nil
+//contains1([1, 2, 3, 4, 5], 2)
+
+//2
+//func contains2(_ array: [Int], _ a: Int) -> Bool {
+//    for i in array {
+//        if i == a {
+//            return true
+//        }
+//    }
+//    return false
 //}
-//numContent2([2,3,4], 4)
+//
+//contains2([1, 2, 3, 4, 5], 7)
 
-
+//-----------------------------------------------------------------
 //Task 8
 
-//func repeatingString(_ str: String, _ n: Int ) -> String {
-//    String(repeating: str, count: n)
+//Напишите функцию, которая повторяет заданную строку N раз.
+//Функция принимает на вход значение типа String (строку для повторений) и
+//значение типа Int (количество повторений) и возвращает полученный результат.
+//Пример:
+//funcName("Swift", 2) -> "SwiftSwift"
+//funcName("Xcode", 0) -> ""
+
+//func repeatString(_ str: String, _ n: Int) -> String {
+//    var result = ""
+//    for _ in 0 ..< n {
+//        result += str
+//    }
+//    return result
 //}
-//repeatingString("Swift", 2)
-//repeatingString("Xcode", 0)
+////или
+////String(repeating: str, count: n)
+//repeatString("Xcode", 7)
 
+//-----------------------------------------------------------------
+//Task 9
+//Мальчик находится на N-ом этаже в здании. Мама мальчика смотрит в окно на M-ом этаже здания.
+//Мальчик выпускает из рук мячик, он летит вниз, отскакивает на (высота броска) * L,
+//вновь летит вниз, вновь отскакивает на (высота предыдущего отскока) * L и т.д, пока не окончит отскакивать.
+//Реализуйте функцию, которая высчитывает, сколько раз мяч пролетит мимо мамы (вниз и вверх).
+//Функция должна принимать на вход следующие параметры:
+//— высота одного этажа (h > 0)
+//— этаж мальчика (N >= 2)
+//— этаж мамы (M >= 1)
+//— коэффициент отскока (L < 1)
 
+//func numbsOfBounces(heightOfFloor h: Double, boyFloor N: Int, momFloor M: Int, reboundFactor L: Double) -> Int {
+//    guard N > 1, M >= 1, L < 1 else {
+//        return 0
+//    }
+//
+//    var totalBounces = 0
+//
+//    var boyHeight = Double(N) * h
+//    let momHeight = Double(M) * h
+//
+//    while boyHeight >= momHeight {
+//        totalBounces += 2
+//        boyHeight *= L
+//    }
+//
+//    return totalBounces
+//}
+//
+//let h = 3.0
+//let N = 5
+//let M = 2
+//let L = 0.4
+//
+//numbsOfBounces(heightOfFloor: h, boyFloor: N, momFloor: M, reboundFactor: L)
+
+//-----------------------------------------------------------------
 //Task 10
-
-//func hasUniqueChar(_ str: String) -> Bool {
-//    var charSet = [Character:Bool]()
+//Напишите функцию, которая принимает параметр типа String,
+//а возвращает true (типа Bool) если в строке есть только уникальные символы,
+//и false, если в ней есть хотя бы один повторяющийся символ.
+//func uniqueChar(_ str: String) -> Bool {
+//    var charSet = [Character: Bool]()
 //    for char in str {
 //        if charSet[char] != nil {
 //            return false
@@ -369,75 +459,94 @@ import Foundation
 //    }
 //    return true
 //}
-//
-//hasUniqueChar("hello")
-//hasUniqueChar("privet")
+//uniqueChar("Hello")
 
-
+//-----------------------------------------------------------------
 //Task 11
+//Напишите функцию, которая определяет, состоят ли две переданные в нее строки из одних и тех же символов.
+//Пример:
+//funcName(in: "abc", and: "bca") // true
+//funcName(in: "abc", and: "bcaa") // false
 
-//func isAnagram(_ a: String, _ b: String) -> Bool {
-//    var result = [Character:Int]()
+//func anagram(_ a: String, _ b: String) -> Bool {
+//    var result = [Character: Int]()
 //    guard a.count == b.count else {
+//        return false
+//    }
+//    for (index, element) in a.enumerated() {
+//            result [element] = index
+//        }
+//        for chars in b {
+//            if result.keys.contains(chars) {
+//                return true
+//            }
+//        }
+//        return false
+//}
+//
+//anagram("abc", "bca")
+//anagram("abc", "bcaa")
+
+//-----------------------------------------------------------------
+//Task 12
+//Напишите функцию, которая принимает на вход целочисленный диапазон
+//и возвращает из него все простые числа.
+
+//func isPrime(_ number: Int) -> Bool {
+//    if number <= 1 {
+//           return false
+//       }
+//
+//    if number <= 3 {
+//           return true
+//       }
+//
+//    if number % 2 == 0 || number % 3 == 0 {
+//           return false
+//       }
+//
+//    var i = 5
+//    while i * i <= number {
+//        if number % i == 0 || number % (i + 2) == 0 {
 //            return false
 //        }
-//    for (index, element) in a.enumerated() {
-//        result [element] = index
+//        i += 6
 //    }
-//    for chars in b {
-//        if result.keys.contains(chars) {
-//            return true
-//        }
-//    }
-//    return false
+//
+//    return true
 //}
 //
-//isAnagram("abc", "bca")
-//isAnagram("abc", "bcaa")
-
-
-//Task 12
-//: не решено
-//func primesInArray(_ end: Int) -> [Int] {
-//    var primes: [Int] = []
-//    for i in 3 ... end {
-//        if i % 2 != 0 {
-//            primes.append(i)
+//func simpleNumbs(_ range: ClosedRange<Int>) -> [Int] {
+//    var primes = [Int]()
+//    for number in range {
+//        if isPrime(number) {
+//            primes.append(number)
 //        }
 //    }
+//
 //    return primes
 //}
-//primesInArray(100)
+//
+//print(simpleNumbs(1...1000))
 
+//-----------------------------------------------------------------
 //Task 13
 
-//func degree(_ factor: Int, _ base: Int) -> Int {
-//    guard factor > 0  else { return 1 }
+//Реализуйте функцию pow(Int,Int), которая принимает два целочисленных элемента.
+//Первый указывает на степень второго числа.
+//Результат функции — второй аргумент функции, возведенный в степень (первый аргумент функции).
+
+//Предполагается, что аргументы могут быть только целыми положительными числами.
+
+//func multiplier(_ degree: Int, _ i: Int) -> Int {
+//    guard degree > 0  else { return 1 }
 //
 //    var result = 1
-//    for _ in 1...factor {
-//        result *= base
-//    }
-//        return result
-//}
-//
-//degree(5, 3)
-//pow(3, 5)
-
-
-//Oleg's Task разворот строки
-
-//var str = "Hello World"
-//
-//func reverse(_ str: String) -> String {
-//    var result = ""
-//    for char in str {
-//        result = String(char) + result
+//    for _ in 1 ... degree {
+//        result *= i
 //    }
 //    return result
 //}
 //
-//reverse(str)
-
-//init
+//multiplier(4, 5)
 
