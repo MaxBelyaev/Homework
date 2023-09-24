@@ -755,7 +755,7 @@ func generateWallet(walletLength: Int) -> [Int] {
         }
     return sum }
     // передача функции в функцию
-    sumWallet(banknotesFunction: generateWallet, walletLength: 20)
+    sumWallet(banknotesFunction: generateWallet, walletLength: 5)
 
 
 //12.5. Возможности функций
@@ -822,7 +822,7 @@ func countdown(firstNum num: Int) -> Void {
         countdown(firstNum:num-1)
     }
 }
-countdown(firstNum: 20)
+countdown(firstNum: 7)
 
 
 //:13.Замыкания (closure)
@@ -841,3 +841,411 @@ func handle100(wallet: [Int]) -> [Int] {
 }
 // вызов функции отбора купюр с достоинством 100
 handle100(wallet: wallet)
+
+//Листинг 13.2
+func handleMore1000(wallet: [Int]) -> [Int] {
+    var returnWallet = [Int]()
+    for banknote in wallet {
+        if banknote >= 1000 {
+            returnWallet.append(banknote)
+        }
+}
+    return returnWallet
+}
+// вызов функции отбора купюр с достоинством более или равно 1000
+handleMore1000(wallet: wallet)
+
+//Листинг 13.3
+// единая функция формирования результирующего массива
+func handle(wallet: [Int], closure: (Int) -> Bool) -> [Int] {
+    var returnWallet = [Int]()
+    for banknote in wallet {
+        if closure(banknote) {
+            returnWallet.append(banknote)
+        }
+}
+    return returnWallet
+}
+// функция сравнения с числом 100
+func compare100(banknote: Int) -> Bool {
+    return banknote == 100
+}
+// функция сравнения с числом 1000
+func compareMore1000(banknote: Int) -> Bool {
+    return banknote >= 1000
+}
+// отбор
+let resultWalletOne = handle(wallet: wallet, closure: compare100)
+let resultWalletTwo = handle(wallet: wallet, closure: compareMore1000)
+
+//Листинг 13.4
+// отбор купюр достоинством выше 1000 рублей
+// аналог передачи compareMore1000
+// отказ от отдельных функций
+handle(wallet: wallet, closure: { (banknote: Int) -> Bool in
+    return banknote >= 1000
+})
+// отбор купюр достоинством 100 рублей
+// аналог передачи compare100
+handle(wallet: wallet, closure: { (banknote: Int) -> Bool in
+    return banknote == 100
+})
+
+//Листинг 13.5
+//В функции handle уже указан тип closure
+// отбор купюр достоинством выше 1000 рублей
+handle(wallet: wallet, closure: { banknote in
+    return banknote >= 1000
+})
+
+//Листинг 13.6
+//Здесь одно выражение, можно неявно вернуть значение.
+handle(wallet: wallet, closure: { banknote in banknote >= 1000})
+
+//Листинг 13.7
+//В функции handle уже указан входной параметр banknote аргумента closure
+//Сокращение имени идёт с $0...
+handle(wallet: wallet,
+    closure: {$0>=1000})
+
+//Листинг 13.8
+//Если замыкание указано последним в функции, то можно вынести его за скобки
+handle(wallet: wallet){ $0 >= 1000 }
+
+//Листинг 13.9
+//Полезно для многострочных замыканий
+handle(wallet: wallet) { banknote in
+    for number in Array(arrayLiteral: 100,500) {
+        if number == banknote {
+return true }
+}
+    return false
+}
+
+//Ещё более короткий cинтаксис с помощью .contains
+let successBanknotes = handle(wallet: wallet) { [100,500].contains($0) }
+     successBanknotes
+
+//Листинг 13.10
+//Вынос за скобки сразу нескольких closure
+func networkQuery(url: String, success: (String) -> (), error: (Int) -> ()) {
+    // код запроса на сервер
+}
+
+//Листинг 13.11
+// классический вариант
+networkQuery(url: "https://weather.com", success: { data in }, error:
+                   {errorCode in })
+// новый вариант
+networkQuery(url: "https://weather.com") { data in
+    // ...
+} error: { errorCode in
+// ...
+}
+
+//Листинг 13.13
+// Безымянные функции в параметрах.
+// входные параметры замыкания не должны иметь внешних имен.
+// явное указание функционального типа позводляет определить входные параметры
+// передача в функцию строкового значения без указания имени
+let closurePrint: (String) -> Void = { text in
+    print(text)
+}
+closurePrint("Text")
+// передача в функцию целочисленных значений
+// с осуществлением доступа через краткий синтаксис $0 и знак нижнего подчеркивания
+var summation: (_ numOne: Int, _ numTwo: Int) -> Int = { $0 + $1 }
+summation(10, 34)
+
+//Листинг 13.14
+// пример использования замыканий при сортировке массива
+let array = [1,44,81,4,277,50,101,51,8]
+var sortedArray = array.sorted(by: { (first: Int, second: Int) -> Bool in
+    return first < second
+})
+sortedArray
+
+//Листинг 13.15
+// уберем функциональный тип замыкания
+// уберем оператор return
+// заменим имена переменных именами сокращенной формой
+sortedArray = array.sorted(by: { $0 < $1 })
+sortedArray
+
+//Листинг 13.16
+// и синкасис замыкания к которому надо стремиться
+sortedArray = array.sorted(by: <)
+sortedArray
+
+//Листинг 13.17
+//Пример обращение замыкания к внешни переменным без их захвата
+//var a1 = 1
+//var b1 = 2
+//let closureSum : () -> Int = { a1 + b1 }
+//closureSum() //3
+//a1 = 3
+//b1 = 4
+//closureSum() //7
+
+//Листинг 13.18
+// для захвата перечисляем их [] и указываем in
+var a1 = 1
+var b1 = 2
+let closureSum : () -> Int = { [a1, b1] in a1 + b1 }
+closureSum()
+b1 = 4
+closureSum()
+
+//Листинг 13.19
+// функция increment автоматически обращается по ссылке к runningTotal и amount внутри своей реализации
+func makeIncrement(forIncrement amount: Int) -> () -> Int {
+    var runningTotal = 0
+    func increment() -> Int {
+        runningTotal += amount
+        return runningTotal
+    }
+    return increment
+}
+
+//Листинг 13.20
+// Каждая из переменных хранит свою копию захваченного значения runningTotal
+// поэтому при их использовании увеличиваемые значения не пересекаются
+// и увеличиваются независимо друг от друга
+var incrementByTen = makeIncrement(forIncrement: 10)
+var incrementBySeven = makeIncrement(forIncrement: 7)
+incrementByTen()
+incrementByTen()
+incrementByTen()
+incrementBySeven()
+incrementBySeven()
+incrementBySeven()
+
+//Листинг 13.21
+//возвращает замыкание типа ()->Int
+var incrementByFive = makeIncrement(forIncrement: 5)
+var copyIncrementByFive = incrementByFive
+
+//Листинг 13.22
+// замыкания передаются не копированием, а с помощью ссылки на область памяти, где хранится это замыкание
+// модификация одного и того же значения runningTotal
+incrementByFive()
+copyIncrementByFive()
+incrementByFive()
+copyIncrementByFive()
+incrementByFive()
+
+// автозамыкания автоматически создаются из переданного выражения
+//Листинг 13.23
+// передаваемое значение вычисляется независимо от того, нужно ли оно в ходе выполнения функции
+
+var arrayOfNames = ["Helga", "Bazil", "Alex"]
+func printName(nextName: String ) {
+    print(nextName)
+}
+printName(nextName: arrayOfNames.remove(at: 0))
+
+//Листинг 13.24
+// решение данной проблемы
+func printName(nextName: () -> String) {
+    // какой-либо код
+    print(nextName())
+}
+printName(nextName: { arrayOfNames.remove(at: 0) })
+
+// Для передачи значения (без фигурных скобок) потребуется:
+// * Входной параметр должен иметь функциональный тип.
+//В примере, приведенном ранее, параметр nextName уже имеет функциональный
+//тип () -> String.
+// * Функциональный тип не должен определять типы входных параметров.
+//В примере типы входных параметров не определены (пустые скобки).
+// * Функциональный тип должен определять тип возвращаемого значения.
+//В примере тип возвращаемого значения определен как String.
+// * Переданное выражение должно возвращать значение того же типа, которое определено в функциональном типе замыкания.
+//В примере передаваемая в качестве аргумента функция возвращает значение типа String точно так же, как определено функциональным типом входного параметра.
+// * Перед функциональным типом необходимо использовать атрибут @autoclosure.
+//Передаваемое значение должно указываться без фигурных скобок.
+
+//Листинг 13.25
+func printName2(nextName: @autoclosure ()->String) {
+    print(nextName())
+}
+printName(nextName: arrayOfNames.remove(at: 0))
+//Теперь метод remove(at:) передается в функцию printName(nextName:) как обычный аргумент, без использования фигурных скобок, но внутри тела используется как самостоятельная функция.
+
+//Листинг 13.26
+var arrayOfClosures: [()->Int] = []
+
+//Листинг 13.27
+// следующий код вызовет ошибку
+//func addNewClosureInArray(_ newClosure: ()->Int) { arrayOfClosures.append(newClosure) }
+
+//Листинг 13.28
+// Замыкание — это тип-ссылка (reference type), то есть оно передается по ссылке, но не копированием.
+// Замыкание, которое будет храниться в параметре newClosure, будет иметь ограниченную телом функции область видимости, а значит, не может быть добавлено в глобальную (по отношению к телу функции) переменную arrayOfClosures.
+//Выходящие (сбегающие) замыкания реализуются атрибутом @escaping
+func addNewClosureInArray(_ newClosure: @escaping ()->Int){
+    arrayOfClosures.append(newClosure)
+}
+addNewClosureInArray({return 100})
+addNewClosureInArray{return 1000}
+arrayOfClosures[0]()
+arrayOfClosures[1]()
+// Если замыкание передается как параметр, то можно использовать inout вместо @escaping.
+
+//: 14.Дополнительные возможности
+//  14.1. Метод map(_:)
+
+// Листинг 14.1
+let myArray = [2, 4, 5, 7]
+var newArray = myArray.map{$0}
+newArray
+
+//let array = [2, 4, 5, 7]
+//var newArray = array.map({
+//    (value: Int) -> Int in
+//    return value
+//})
+
+//Листинг 14.2
+newArray = newArray.map{$0*$0}
+newArray // [4, 16, 25, 49]
+
+//Листинг 14.3
+let intArray = [1, 2, 3, 4]
+let boolArray = intArray.map{$0 > 2}
+boolArray
+
+//Листинг 14.4
+let numbers = [1, 2, 3, 4]
+let mapped = numbers.map { Array(repeating: $0, count: $0) }
+mapped
+
+//Листинг 14.5
+let milesToDest = ["Moscow":120.0,"Dubai":50.0,"Paris":70.0]
+let kmToDest = milesToDest.map { name,miles in [name:miles * 1.6093] }
+kmToDest
+
+//  14.2. Метод mapValues(_:)
+
+
+//Листинг 14.6
+// оставляет ключи элементов без изменений
+let mappedCloseStars = ["Proxima Centauri": 4.24, "Alpha Centauri A": 4.37]
+let newCollection = mappedCloseStars.mapValues{ $0+1 }
+newCollection
+//  14.3. Метод flatMap(_:)
+
+//Листинг 14.7
+// возвращает плоский одномерный массив
+let numbersArray = [1, 2, 3, 4]
+let flatMapped = numbersArray.flatMap { Array(repeating: $0, count: $0) }
+flatMapped
+
+//Листинг 14.8
+// удобен для поиска по условию в многомерном массиве
+let someArray = [[1, 2, 3, 4, 5], [11, 44, 1, 6], [16, 403, 321, 10]]
+let filterSomeArray = someArray.flatMap{$0.filter{ $0 % 2 == 0}}
+filterSomeArray
+
+//  14.4. Метод compactMap(_:)
+
+//Листинг 14.9
+let stringArray = ["1", "2", "3", "four", "5"]
+let intFromStringArray = stringArray.map() { Int($0) }
+intFromStringArray
+
+//Листинг 14.10
+// неуспешные преобразования будут проигнорированы и исключены из результата
+let arrayWitoutNil = stringArray.compactMap() { Int($0) }
+arrayWitoutNil
+
+//  14.5. Метод filter(_:)
+
+//Листинг 14.11
+// возвращает отфильрованные элементы по правилу
+let numArray2 = [1, 4, 10, 15]
+let even = numArray2.filter{ $0 % 2 == 0 }
+even
+
+//Листинг 14.12
+let starDistanceDict = ["Wolf 359": 7.78, "Alpha Centauri B": 4.37, "Barnard's Star": 5.96]
+let closeStars = starDistanceDict.filter { $0.value < 5.0 }
+closeStars
+
+//  14.6. Метод reduce(_:_:)
+
+//Листинг 14.13
+// позволяет объеденить все элементы с указанием замыкания
+let cash = [10, 50, 100, 500]
+let total = cash.reduce(210, +)
+
+//Листинг 14.14
+let multiTotal = cash.reduce(210, { $0 * $1 })
+multiTotal 
+let totalThree = cash.reduce(210, {a,b in a-b})
+totalThree
+
+//  14.7. Метод zip(_:_:)
+
+//Листинг 14.15
+let collectionOne = [1, 2, 3]
+let collectionTwo = [4, 5, 6]
+let zipSequence = zip(collectionOne, collectionTwo)
+type(of: zipSequence)
+// генерация массива из сформированной последовательности
+Array(zipSequence)
+// генерация словаря на основе последовательности пар значений
+let newDictionary = Dictionary(uniqueKeysWithValues: zipSequence)
+newDictionary
+
+//  14.8. Оператор guard для опционалов
+
+//Листинг 14.16
+func countSidesOfShape(shape: String) -> Int? {
+    switch shape {
+    case "треугольник":
+        return 3;
+    case "квадрат":
+        return 4;
+    case "прямоугольник":
+        return 4;
+    default:
+        return nil
+    }
+}
+
+//Листинг 14.17
+func maybePrintCountSides(shape: String) {
+    if let sides = countSidesOfShape(shape: shape) {
+        print("Фигура \(shape) имеет \(sides) стороны")
+    } else {
+        print("Неизвестно количество сторон фигуры \(shape)")
+    }
+}
+
+//Листинг 14.18
+//если фигура отсутствует в базе, нет смысла выполнять функцию
+//можно вывести информационное сообщение и досрочно завершить ее работу
+func maybePrintCountSides2 (shape: String)  {
+    guard let sides = countSidesOfShape(shape: shape) else {
+        print("Неизвестно количество сторон фигуры \(shape)")
+return }
+    print("Фигура \(shape) имеет \(sides) стороны")
+}
+
+//  14.9. Оператор отложенных действий defer
+
+//Листинг 14.19
+// defer откладывает выполнение определенного в его теле кода до момента выхода из области видимости, в которой он был использован
+// поэтому выполняется сначала сама функция, затем с последнего блока defer
+func someFunction() {
+    defer {
+        print("action in defer")
+    }
+defer {
+        print("another action in defer")
+    }
+    print("action in function")
+}
+someFunction()
+
