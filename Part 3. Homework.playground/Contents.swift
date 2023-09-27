@@ -834,3 +834,4 @@ func descriptNumber(_ number:String) -> String {
         }
     return result
 }
+literify("Я охренел от полученных знаний 1234 раз")
