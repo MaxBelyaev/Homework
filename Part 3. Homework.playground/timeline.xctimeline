@@ -3,40 +3,58 @@
    version = "3.0">
    <TimelineItems>
       <LoggerValueHistoryTimelineItem
-         documentLocation = "file:///Users/maksimbelaev/Desktop/Development/Homework/Part%203.%20Homework.playground#CharacterRangeLen=96&amp;CharacterRangeLoc=4999&amp;EndingColumnNumber=45&amp;EndingLineNumber=225&amp;StartingColumnNumber=42&amp;StartingLineNumber=223&amp;Timestamp=717535100.229938"
+         documentLocation = "file:///Users/maksimbelaev/Desktop/Development/Homework/Part%203.%20Homework.playground#CharacterRangeLen=96&amp;CharacterRangeLoc=4999&amp;EndingColumnNumber=45&amp;EndingLineNumber=225&amp;StartingColumnNumber=42&amp;StartingLineNumber=223&amp;Timestamp=717620928.183313"
          selectedRepresentationIndex = "0"
          shouldTrackSuperviewWidth = "NO">
       </LoggerValueHistoryTimelineItem>
       <LoggerValueHistoryTimelineItem
-         documentLocation = "file:///Users/maksimbelaev/Desktop/Development/Homework/Part%203.%20Homework.playground#CharacterRangeLen=217&amp;CharacterRangeLoc=5911&amp;EndingColumnNumber=18&amp;EndingLineNumber=251&amp;StartingColumnNumber=3&amp;StartingLineNumber=242&amp;Timestamp=717535100.230003"
+         documentLocation = "file:///Users/maksimbelaev/Desktop/Development/Homework/Part%203.%20Homework.playground#CharacterRangeLen=217&amp;CharacterRangeLoc=5911&amp;EndingColumnNumber=18&amp;EndingLineNumber=251&amp;StartingColumnNumber=3&amp;StartingLineNumber=242&amp;Timestamp=717620928.183534"
          selectedRepresentationIndex = "0"
          shouldTrackSuperviewWidth = "NO">
       </LoggerValueHistoryTimelineItem>
       <LoggerValueHistoryTimelineItem
-         documentLocation = "file:///Users/maksimbelaev/Desktop/Development/Homework/Part%203.%20Homework.playground#CharacterRangeLen=3&amp;CharacterRangeLoc=5179&amp;EndingColumnNumber=71&amp;EndingLineNumber=228&amp;StartingColumnNumber=68&amp;StartingLineNumber=228&amp;Timestamp=717535100.230045"
+         documentLocation = "file:///Users/maksimbelaev/Desktop/Development/Homework/Part%203.%20Homework.playground#CharacterRangeLen=3&amp;CharacterRangeLoc=5179&amp;EndingColumnNumber=71&amp;EndingLineNumber=228&amp;StartingColumnNumber=68&amp;StartingLineNumber=228&amp;Timestamp=717620928.183669"
          lockedSize = "{540, 128}"
          selectedRepresentationIndex = "0"
          shouldTrackSuperviewWidth = "NO">
       </LoggerValueHistoryTimelineItem>
       <LoggerValueHistoryTimelineItem
-         documentLocation = "file:///Users/maksimbelaev/Desktop/Development/Homework/Part%203.%20Homework.playground#CharacterRangeLen=0&amp;CharacterRangeLoc=6939&amp;EndingColumnNumber=44&amp;EndingLineNumber=278&amp;StartingColumnNumber=44&amp;StartingLineNumber=278&amp;Timestamp=717535100.2300889"
+         documentLocation = "file:///Users/maksimbelaev/Desktop/Development/Homework/Part%203.%20Homework.playground#CharacterRangeLen=0&amp;CharacterRangeLoc=6939&amp;EndingColumnNumber=44&amp;EndingLineNumber=278&amp;StartingColumnNumber=44&amp;StartingLineNumber=278&amp;Timestamp=717620928.183816"
          lockedSize = "{178, 332}"
          selectedRepresentationIndex = "0"
          shouldTrackSuperviewWidth = "NO">
       </LoggerValueHistoryTimelineItem>
       <LoggerValueHistoryTimelineItem
-         documentLocation = "file:///Users/maksimbelaev/Desktop/Development/Homework/Part%203.%20Homework.playground#CharacterRangeLen=0&amp;CharacterRangeLoc=6939&amp;EndingColumnNumber=44&amp;EndingLineNumber=278&amp;StartingColumnNumber=44&amp;StartingLineNumber=278&amp;Timestamp=717535100.23013"
+         documentLocation = "file:///Users/maksimbelaev/Desktop/Development/Homework/Part%203.%20Homework.playground#CharacterRangeLen=0&amp;CharacterRangeLoc=6939&amp;EndingColumnNumber=44&amp;EndingLineNumber=278&amp;StartingColumnNumber=44&amp;StartingLineNumber=278&amp;Timestamp=717620928.183954"
          selectedRepresentationIndex = "0"
          shouldTrackSuperviewWidth = "NO">
       </LoggerValueHistoryTimelineItem>
       <LoggerValueHistoryTimelineItem
-         documentLocation = "file:///Users/maksimbelaev/Desktop/Development/Homework/Part%203.%20Homework.playground#CharacterRangeLen=0&amp;CharacterRangeLoc=6939&amp;EndingColumnNumber=44&amp;EndingLineNumber=278&amp;StartingColumnNumber=44&amp;StartingLineNumber=278&amp;Timestamp=717535100.230168"
+         documentLocation = "file:///Users/maksimbelaev/Desktop/Development/Homework/Part%203.%20Homework.playground#CharacterRangeLen=0&amp;CharacterRangeLoc=6939&amp;EndingColumnNumber=44&amp;EndingLineNumber=278&amp;StartingColumnNumber=44&amp;StartingLineNumber=278&amp;Timestamp=717620928.1840709"
          selectedRepresentationIndex = "0"
          shouldTrackSuperviewWidth = "NO">
       </LoggerValueHistoryTimelineItem>
       <LoggerValueHistoryTimelineItem
-         documentLocation = "file:///Users/maksimbelaev/Desktop/Development/Homework/Part%203.%20Homework.playground#CharacterRangeLen=0&amp;CharacterRangeLoc=6939&amp;EndingColumnNumber=44&amp;EndingLineNumber=278&amp;StartingColumnNumber=44&amp;StartingLineNumber=278&amp;Timestamp=717535100.2302051"
+         documentLocation = "file:///Users/maksimbelaev/Desktop/Development/Homework/Part%203.%20Homework.playground#CharacterRangeLen=0&amp;CharacterRangeLoc=6939&amp;EndingColumnNumber=44&amp;EndingLineNumber=278&amp;StartingColumnNumber=44&amp;StartingLineNumber=278&amp;Timestamp=717620928.184204"
          lockedSize = "{175, 50}"
+         selectedRepresentationIndex = "0"
+         shouldTrackSuperviewWidth = "NO">
+      </LoggerValueHistoryTimelineItem>
+      <LoggerValueHistoryTimelineItem
+         documentLocation = "file:///Users/maksimbelaev/Desktop/Development/Homework/Part%203.%20Homework.playground#CharacterRangeLen=52&amp;CharacterRangeLoc=22800&amp;EndingColumnNumber=50&amp;EndingLineNumber=833&amp;StartingColumnNumber=1&amp;StartingLineNumber=831&amp;Timestamp=717620928.18431"
+         lockedSize = "{320, 50}"
+         selectedRepresentationIndex = "0"
+         shouldTrackSuperviewWidth = "NO">
+      </LoggerValueHistoryTimelineItem>
+      <LoggerValueHistoryTimelineItem
+         documentLocation = "file:///Users/maksimbelaev/Desktop/Development/Homework/Part%203.%20Homework.playground#CharacterRangeLen=45&amp;CharacterRangeLoc=22807&amp;EndingColumnNumber=50&amp;EndingLineNumber=833&amp;StartingColumnNumber=5&amp;StartingLineNumber=833&amp;Timestamp=717620928.1844079"
+         lockedSize = "{339, 50}"
+         selectedRepresentationIndex = "0"
+         shouldTrackSuperviewWidth = "NO">
+      </LoggerValueHistoryTimelineItem>
+      <LoggerValueHistoryTimelineItem
+         documentLocation = "file:///Users/maksimbelaev/Desktop/Development/Homework/Part%203.%20Homework.playground#CharacterRangeLen=47&amp;CharacterRangeLoc=22805&amp;EndingColumnNumber=50&amp;EndingLineNumber=833&amp;StartingColumnNumber=3&amp;StartingLineNumber=833&amp;Timestamp=717620928.184515"
+         lockedSize = "{360, 50}"
          selectedRepresentationIndex = "0"
          shouldTrackSuperviewWidth = "NO">
       </LoggerValueHistoryTimelineItem>
